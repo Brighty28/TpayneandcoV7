@@ -1,0 +1,30 @@
+# Build output (compiled DLLs land directly in TpayneandCo/bin/; the native
+# SQL CE binaries under bin/x86 and bin/amd64 are checked-in content, not output)
+TpayneandCo/bin/*.dll
+TpayneandCo/bin/*.pdb
+TpayneandCo/bin/*.xml
+TpayneandCo/obj/
+
+# NuGet (restored automatically by Visual Studio / nuget restore from packages.config)
+packages/
+*.nupkg
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Umbraco runtime data (created at runtime, not source)
+TpayneandCo/App_Data/*
+!TpayneandCo/App_Data/.gitkeep
+TpayneandCo/Media/*
+!TpayneandCo/Media/Web.config
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
