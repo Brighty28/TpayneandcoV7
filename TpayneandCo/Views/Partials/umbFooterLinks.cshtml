@@ -1,0 +1,13 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+  var multiUrlPickerDyn = CurrentPage.ServiceLinks;
+  if (multiUrlPickerDyn.Any())
+  {
+    <ul>
+      @foreach (var item in multiUrlPickerDyn)
+      {
+        <a href="@item.Url" target="@item.Target">@item.Name</a> @:|
+      }
+    </ul>
+  }
+}

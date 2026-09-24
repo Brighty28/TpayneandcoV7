@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <files>
+    <file>
+      <guid>CMSImport.JSONDataProvider.dll</guid>
+      <orgPath>/bin</orgPath>
+      <orgName>CMSImport.JSONDataProvider.dll</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>CMSImport Jupix Images FieldProvider</name>
+      <version>1.0</version>
+      <license url="http://soetemansoftware.nl/cmsimport/cmsimport-licenseagreement">CMSImport (PRO) License Agreement</license>
+      <url>http://soetemansoftware.nl/cmsimport</url>
+      <requirements>
+        <major>3</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Soeteman Software</name>
+      <website>http://soetemansoftware.nl/</website>
+    </author>
+    <readme><![CDATA[Field provider that downloads the images assigned and creates them in the media library and assigns to the content items.]]></readme>
+  </info>
+  <DocumentTypes />
+  <Templates />
+  <Stylesheets />
+  <Macros />
+  <DictionaryItems />
+  <Languages />
+  <DataTypes />
+</umbPackage>

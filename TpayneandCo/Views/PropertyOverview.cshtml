@@ -1,0 +1,11 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.UmbPropertyOverview>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "umbLayout.cshtml";
+}
+
+<div id="main-wrapper">
+    <div id="main">
+        @Umbraco.RenderMacro("ezSearch", new {rootContentNodeId = "1106", rootMediaNodeId = "", indexType = "BOTH", searchFields = "regionID", previewFields = "pageTitle, price, images, availability", previewLength = "", pageSize = "9", hideFromSearchField = "", searchFormLocation = "TOP"})
+    </div>
+</div>

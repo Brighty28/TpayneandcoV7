@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<properties>
+<property>
+	<propertyID>38144</propertyID>
+	<branchID>1</branchID>
+	<clientName>JUPIX Demo</clientName>
+	<branchName>Cambridge Office</branchName>
+	<department>Lettings</department>
+	<referenceNumber>10002</referenceNumber>
+	<addressName></addressName>
+	<addressNumber>22</addressNumber>
+	<addressStreet>London Street</addressStreet>
+	<address2></address2>
+	<address3>Andover</address3>
+	<address4>Hampshire</address4>
+	<addressPostcode>SP10 2NU</addressPostcode>
+	<country>United Kingdom</country>
+	<displayAddress></displayAddress>
+	<propertyBedrooms>4</propertyBedrooms>
+	<propertyBathrooms>2</propertyBathrooms>
+	<propertyEnsuites>1</propertyEnsuites>
+	<propertyReceptionRooms>3</propertyReceptionRooms>
+	<propertyKitchens>1</propertyKitchens>
+	<displayPropertyType>Detached House</displayPropertyType>
+	<propertyType>1</propertyType>
+	<propertyStyle>4</propertyStyle>
+	<propertyAge>3</propertyAge>
+	<floorArea>400.00</floorArea>
+	<floorAreaUnits>sq ft</floorAreaUnits>
+	<propertyFeature1>Detached House</propertyFeature1>
+	<propertyFeature2>Four Bedrooms</propertyFeature2>
+	<propertyFeature3>Gas Heating</propertyFeature3>
+	<propertyFeature4></propertyFeature4>
+	<propertyFeature5></propertyFeature5>
+	<propertyFeature6></propertyFeature6>
+	<propertyFeature7></propertyFeature7>
+	<propertyFeature8></propertyFeature8>
+	<propertyFeature9></propertyFeature9>
+	<propertyFeature10></propertyFeature10>
+	<rent>850</rent>
+	<rentFrequency>1</rentFrequency>
+	<toLetPOA>0</toLetPOA>
+	<studentProperty>1</studentProperty>
+	<availability>2</availability>
+	<mainSummary>A smart 4 bed detached house close to the station</mainSummary>
+	<fullDescription><![CDATA[A smart 4 bed detached house close to the station]]></fullDescription>
+	<dateLastModified>1970-01-01</dateLastModified>
+	<featuredProperty>0</featuredProperty>
+	<regionID>11</regionID>
+	<latitude>51.206383</latitude>
+	<longitude>-1.477803</longitude>
+	<flags>
+	</flags>
+	<images>
+	</images>
+	<floorplans>
+	</floorplans>
+	<epcGraphs>
+	</epcGraphs>
+	<epcFrontPages>
+		<epcFrontPage modified="2011-04-01 11:35:00">http://epc.jupix.co.uk/cc65bdd</epcFrontPage>
+	</epcFrontPages>
+	<brochures>
+	</brochures>
+	<virtualTours>
+	</virtualTours>
+	<externalLinks>
+		<externalLink>
+			<url><![CDATA[http://www.home-passport.com/application/assets/uploads/orders/complete/14434/]]></url>
+			<description>Home Passport</description>
+			<modified>2012-11-21 12:58:33</modified>
+		</externalLink>
+	</externalLinks>
+</property>
+	<property>
+		<propertyID>101372000499</propertyID>
+		<branchID>1</branchID>
+		<clientName>T Payne &amp; Co</clientName>
+		<branchName>Chatteris</branchName>
+		<department>Sales</department>
+		<referenceNumber>10404</referenceNumber>
+		<addressName></addressName>
+		<addressNumber>3d</addressNumber>
+		<addressStreet>Rosemary Lane</addressStreet>
+		<address2></address2>
+		<address3>Chatteris</address3>
+		<address4></address4>
+		<addressPostcode>PE16 6EP</addressPostcode>
+		<country>United Kingdom</country>
+		<displayAddress>Rosemary Lane, Chatteris, Cambs, PE16 6EP</displayAddress>
+		
+		<propertyBedrooms>3</propertyBedrooms>
+		<propertyBathrooms>1</propertyBathrooms>
+		<propertyEnsuites>0</propertyEnsuites>
+		<propertyReceptionRooms>2</propertyReceptionRooms>
+		<propertyKitchens>0</propertyKitchens>
+		<displayPropertyType>Semi-Detached House</displayPropertyType>
+		<propertyType>1</propertyType>
+		<propertyStyle>5</propertyStyle>
+		<propertyAge>7</propertyAge>
+		<floorArea>0.00</floorArea>
+		<floorAreaUnits>sq ft</floorAreaUnits>
+		<propertyFeature1>Semi Detached House</propertyFeature1>
+		<propertyFeature2>3 Bedrooms &amp;amp; Shower Room</propertyFeature2>
+		<propertyFeature3>2 Reception Rooms</propertyFeature3>
+		<propertyFeature4>Enclosed Rear Garden </propertyFeature4>
+		<propertyFeature5>Off Road Parking For 1 Vehicle </propertyFeature5>
+		<propertyFeature6>No Onward Chain</propertyFeature6>
+		<propertyFeature7></propertyFeature7>
+		<propertyFeature8></propertyFeature8>
+		<propertyFeature9></propertyFeature9>
+		<propertyFeature10></propertyFeature10><price>145000</price><forSalePOA>0</forSalePOA>
+		<priceQualifier>10</priceQualifier>
+		<propertyTenure>1</propertyTenure>
+		<saleBy>1</saleBy>
+		<developmentOpportunity>0</developmentOpportunity>
+		<investmentOpportunity>0</investmentOpportunity>
+		<estimatedRentalIncome>0.00</estimatedRentalIncome>
+		<availability>4</availability>
+		<mainSummary>Semi Detached House - 3 Bedrooms - Shower Room - 2 Reception Rooms - Enclosed Rear Garden - Off Road Parking For 1 Vehicle - Viewing Highly Recommended - Call To View (01354 696700) - Open weekdays till 8pm - Saturday till 5pm - Sunday till 4pm </mainSummary>
+		<fullDescription><![CDATA[<strong>Entrance</strong> <strong>Hall</strong> <strong></strong> Entrance door, Stairs to first floor and door to: <br /><br /><strong>Lounge</strong> <strong>3.86m</strong> <strong>(12'8&#34;)</strong> <strong>x</strong> <strong>3.09m</strong> <strong>(10'1&#34;)</strong> <strong></strong> Double glazed bay window to front, gas fire with stone built surround, storage cupboard, radiator and door to: <br /><br /><strong>Dining</strong> <strong>Room</strong> <strong>3.71m (12'2&#34;) x 3.40m (11'2&#34;)</strong> Double glazed window to side and rear, gas fired back boiler with stone surround, radiator and door to: <br /><br /><strong>Kitchen</strong> <strong>3.46m</strong> <strong>(11'4&#34;)</strong> <strong>x</strong> <strong>2.32m</strong> <strong>(7'7&#34;)</strong> <strong></strong> Fitted with a matching range of base and eye level units with worktop, tiled splashbacks, stainless steel sink with mixer tap, space and plumbing for washing machine, space for fridge/freezer, fitted electric oven, electric hob with extractor hood over, double glazed window and door to side.  <br /><br /><strong>First</strong> <strong>Floor</strong> <strong></strong>  <br /><br /><strong>Bedroom</strong> <strong>1</strong> <strong>3.88m</strong> <strong>(12'9&#34;)</strong> <strong>x</strong> <strong>3.13m</strong> <strong>(10'3&#34;)</strong> <strong></strong> Double glazed window to front and radiator. <br /><br /><strong>Bedroom</strong> <strong>2</strong> <strong>3.42m</strong> <strong>(11'3&#34;)</strong> <strong>max</strong> <strong>x</strong> <strong>3.05m</strong> <strong>(10')</strong> <strong></strong> Double glazed window to rear, built in storage cupboard and radiator. <br /><br /><strong>Bedroom</strong> <strong>3</strong> <strong>2.30m</strong> <strong>(7'7&#34;)</strong> <strong>x</strong> <strong>1.99m</strong> <strong>(6'6&#34;)</strong> <strong></strong> Double glazed window to rear and radiator.  <br /><br /><strong>Shower</strong> <strong>Room</strong> <strong></strong> <strong></strong> Double glazed window to side, shower cubicle, low level WC, pedestal wash hand basin, heated towel rail, fully tiled walls and floor. <br /><br /><strong>Outside</strong> <strong></strong> Shingle driveway to the front of the property allowing parking for 1 car. Pathway to entrance door and side gate. The rear garden is low maintenance and fully enclosed with a paved patio and the remainder laid to shingle. <br /><br /><strong>Directions</strong> <strong></strong> Turning right out of our High Street office continue into Park Street. Turn right into Station Road, then left in to station Street. Rosemary Lane can be found on the left hand side and this property is located on the left hand side. <br /><br /><strong>EPC</strong> <strong>Rating</strong> <strong>-</strong> <strong>E</strong> <strong></strong>  ]]></fullDescription>
+		<dateLastModified>2016-11-23</dateLastModified>
+        <timeLastModified>11:19:44</timeLastModified>
+		<featuredProperty>0</featuredProperty>
+		<regionID>7</regionID>
+		<latitude>52.4524</latitude>
+		<longitude>0.0426715</longitude>
+		<flags>
+		</flags>
+		<images>
+			<image modified="2016-05-12 15:14:34">http://media2.jupix.co.uk/v3/clients/1372/properties/497/IMG_497_5_large.jpg</image>
+			<image modified="2016-05-12 15:14:34">http://media2.jupix.co.uk/v3/clients/1372/properties/497/IMG_497_8_large.jpg</image>
+			<image modified="2016-05-12 15:14:34">http://media2.jupix.co.uk/v3/clients/1372/properties/497/IMG_497_6_large.jpg</image>
+			<image modified="2016-05-12 15:14:34">http://media2.jupix.co.uk/v3/clients/1372/properties/497/IMG_497_7_large.jpg</image>
+			<image modified="2016-05-12 15:14:34">http://media2.jupix.co.uk/v3/clients/1372/properties/497/IMG_497_1_large.jpg</image>
+			<image modified="2016-05-12 15:14:34">http://media2.jupix.co.uk/v3/clients/1372/properties/497/IMG_497_2_large.jpg</image>
+			<image modified="2016-05-12 15:14:34">http://media2.jupix.co.uk/v3/clients/1372/properties/497/IMG_497_3_large.jpg</image>
+			<image modified="2016-05-12 15:14:34">http://media2.jupix.co.uk/v3/clients/1372/properties/497/IMG_497_4_large.jpg</image>
+		</images>
+		<floorplans>
+			<floorplan modified="2016-03-08 12:26:57">http://media2.jupix.co.uk/v3/clients/1372/properties/497/FLP_497_1_large.jpg</floorplan>
+		</floorplans>
+		<epcGraphs>
+			<epcGraph modified="2016-03-09 11:08:07">http://media2.jupix.co.uk/v3/clients/1372/properties/497/MED_497_2655.jpg</epcGraph>
+		</epcGraphs>
+		<epcFrontPages>
+		</epcFrontPages>
+		<brochures>
+			<brochure modified="2016-07-22 10:41:49">http://media2.jupix.co.uk/v3/clients/1372/properties/497/MED_497_4637.pdf</brochure>
+		</brochures>
+		<virtualTours>
+		</virtualTours>
+		<externalLinks>
+		</externalLinks>
+	</property>
+</properties>

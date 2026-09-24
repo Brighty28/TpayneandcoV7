@@ -1,0 +1,303 @@
+﻿ 2017-03-22 08:38:08,832 [P11548/D2/T1] INFO  Umbraco.Core.CoreBootManager - Umbraco 7.5.8 application starting on FREELANCE-PC
+ 2017-03-22 08:38:08,863 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Determining hash of code files on disk
+ 2017-03-22 08:38:08,907 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Hash determined (took 44ms)
+ 2017-03-22 08:38:08,997 [P11548/D2/T1] INFO  Umbraco.Core.MainDom - Acquiring MainDom...
+ 2017-03-22 08:38:08,998 [P11548/D2/T1] INFO  Umbraco.Core.MainDom - Acquired MainDom.
+ 2017-03-22 08:38:09,007 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+ 2017-03-22 08:38:09,777 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 0 (took 769ms)
+ 2017-03-22 08:38:09,793 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+ 2017-03-22 08:38:09,800 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 0 (took 6ms)
+ 2017-03-22 08:38:09,800 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyValueConverter
+ 2017-03-22 08:38:09,811 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyValueConverter, found 0 (took 10ms)
+ 2017-03-22 08:38:09,830 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+ 2017-03-22 08:38:09,839 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 8ms)
+ 2017-03-22 08:38:09,840 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+ 2017-03-22 08:38:09,852 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 0 (took 12ms)
+ 2017-03-22 08:38:09,962 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+ 2017-03-22 08:38:09,972 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 0 (took 10ms)
+ 2017-03-22 08:38:09,973 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+ 2017-03-22 08:38:09,981 [P11548/D2/T1] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 0 (took 8ms)
+ 2017-03-22 08:38:12,905 [P11548/D2/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2017-03-22 08:38:13,328 [P11548/D2/T1] INFO  Umbraco.Web.Cache.CacheRefresherEventHandler - Initializing Umbraco internal event handlers for cache refreshing
+ 2017-03-22 08:38:13,476 [P11548/D2/T1] INFO  Umbraco.Web.Search.ExamineEvents - Initializing Examine and binding to business logic events
+ 2017-03-22 08:38:13,797 [P11548/D2/T1] INFO  UmbracoExamine.LocalStorage.LocalTempStorageIndexer - Successfully sync'd main index to local temp storage for index: ~/App_Data/TEMP/ExamineIndexes/External/
+ 2017-03-22 08:38:13,830 [P11548/D2/T1] INFO  Umbraco.Web.Search.ExamineEvents - Adding examine event handlers for index providers: 3
+ 2017-03-22 08:38:13,900 [P11548/D2/T1] INFO  UmbracoExamine.DataServices.UmbracoLogService - Rebuilding index, Provider=ExternalIndexer, NodeId=-1
+ 2017-03-22 08:38:14,009 [P11548/D2/T1] INFO  UmbracoExamine.DataServices.UmbracoLogService - PerformIndexAll - Start data queries - content, Provider=ExternalIndexer, NodeId=-1
+ 2017-03-22 08:38:15,367 [P11548/D2/T1] INFO  UmbracoExamine.DataServices.UmbracoLogService - PerformIndexAll - End data queries - content, took 1357ms, Provider=ExternalIndexer, NodeId=-1
+ 2017-03-22 08:38:15,369 [P11548/D2/T1] INFO  UmbracoExamine.DataServices.UmbracoLogService - PerformIndexAll - Start data queries - media, Provider=ExternalIndexer, NodeId=-1
+ 2017-03-22 08:38:16,171 [P11548/D2/T1] INFO  UmbracoExamine.DataServices.UmbracoLogService - PerformIndexAll - End data queries - media, took 801ms, Provider=ExternalIndexer, NodeId=-1
+ 2017-03-22 08:38:16,191 [P11548/D2/T1] INFO  Umbraco.Core.CoreBootManager - Umbraco application startup complete (took 7544ms)
+ 2017-03-22 08:38:16,527 [P11548/D2/T8] INFO  Umbraco.Core.Sync.ApplicationUrlHelper - ApplicationUrl: http://localhost:58219/umbraco (UmbracoModule request)
+ 2017-03-22 08:38:17,323 [P11548/D2/T8] INFO  umbraco.content - Load Xml from file...
+ 2017-03-22 08:38:17,346 [P11548/D2/T8] INFO  umbraco.content - Loaded Xml from file.
+ 2017-03-22 08:38:17,814 [P11548/D2/T8] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IParameterEditor
+ 2017-03-22 08:38:17,850 [P11548/D2/T8] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IParameterEditor, found 0 (took 35ms)
+ 2017-03-22 08:38:46,086 [P11548/D2/T8] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+ 2017-03-22 08:38:46,099 [P11548/D2/T8] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 0 (took 13ms)
+ 2017-03-22 08:38:46,478 [P11548/D2/T8] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IParameterEditor
+ 2017-03-22 08:38:46,478 [P11548/D2/T8] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IParameterEditor, found 0 (took 0ms)
+ 2017-03-22 08:38:46,521 [P11548/D2/T8] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.cms.businesslogic.macro.IMacroEngine
+ 2017-03-22 08:38:46,535 [P11548/D2/T8] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.cms.businesslogic.macro.IMacroEngine, found 0 (took 14ms)
+ 2017-03-22 08:38:59,226 [P11548/D2/T8] WARN  Umbraco.Web.UmbracoModule - Status code is 404 yet TrySkipIisCustomErrors is false - IIS will take over.
+ 2017-03-22 08:39:17,651 [P11548/D2/T15] INFO  umbraco.BusinessLogic.Log - Log scrubbed.  Removed all items older than 2017-03-21 08:39:17
+ 2017-03-22 08:40:37,960 [P11548/D2/T11] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: Login attempt succeeded for username abright2012@gmail.com from IP address ::1
+ 2017-03-22 08:40:37,964 [P11548/D2/T11] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: User: abright2012@gmail.com logged in from IP address ::1
+ 2017-03-22 08:40:38,193 [P11548/D2/T8] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Trees.TreeController
+ 2017-03-22 08:40:38,205 [P11548/D2/T8] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Trees.TreeController, found 0 (took 12ms)
+ 2017-03-22 08:40:38,361 [P11548/D2/T9] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.ITree
+ 2017-03-22 08:40:38,382 [P11548/D2/T9] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.ITree, found 0 (took 20ms)
+ 2017-03-22 08:40:38,410 [P11548/D2/T9] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Trees.TreeController
+ 2017-03-22 08:40:38,411 [P11548/D2/T9] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Trees.TreeController, found 0 (took 0ms)
+ 2017-03-22 08:40:38,415 [P11548/D2/T9] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.ITree
+ 2017-03-22 08:40:38,459 [P11548/D2/T9] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.ITree, found 0 (took 44ms)
+ 2017-03-22 08:40:38,459 [P11548/D2/T25] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.IApplication
+ 2017-03-22 08:40:38,483 [P11548/D2/T25] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.IApplication, found 0 (took 23ms)
+ 2017-03-22 08:41:12,432 [P11548/D2/T23] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.HealthCheck.HealthCheck
+ 2017-03-22 08:41:12,455 [P11548/D2/T23] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.HealthCheck.HealthCheck, found 0 (took 19ms)
+ 2017-03-22 08:42:16,245 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Tithe Road, Chatteris, Cambs, PE16 6SL' with Id '2997' has been published.
+ 2017-03-22 08:42:16,963 [P11548/D2/T15] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.ICacheRefresher
+ 2017-03-22 08:42:17,021 [P11548/D2/T15] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.ICacheRefresher, found 0 (took 57ms)
+ 2017-03-22 08:42:18,163 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:19,974 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'High Street, Chatteris, PE16 6NN' with Id '2998' has been published.
+ 2017-03-22 08:42:20,313 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:20,705 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Knights End Road, March, Cambs, PE15 0YL' with Id '2999' has been published.
+ 2017-03-22 08:42:20,900 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:21,917 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'High Street, Chatteris, PE16 6BE' with Id '3000' has been published.
+ 2017-03-22 08:42:22,131 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:23,678 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Wimblington Road, March PE15 9QN' with Id '3001' has been published.
+ 2017-03-22 08:42:23,875 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:24,828 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Orchard Road, March, Cambs, PE15 9DD' with Id '3002' has been published.
+ 2017-03-22 08:42:25,051 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:26,145 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'West Street, Chatteris, Cambs, PE16 6HP' with Id '3003' has been published.
+ 2017-03-22 08:42:26,314 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:27,137 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Haighs Close, Chatteris, Cambs PE16 6HU' with Id '3004' has been published.
+ 2017-03-22 08:42:27,479 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:29,171 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'High Street, Chatteris, Cambs, PE16 6NN' with Id '3005' has been published.
+ 2017-03-22 08:42:29,417 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:30,879 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Green Park, Chatteris, Cambs, PE16 6DN' with Id '3006' has been published.
+ 2017-03-22 08:42:31,064 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:31,947 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'East Street, Manea, March, Cambs, PE15 0JJ' with Id '3007' has been published.
+ 2017-03-22 08:42:32,127 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:33,373 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Beech Grove, March, Cambs, PE15 8JS' with Id '3008' has been published.
+ 2017-03-22 08:42:33,559 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:34,564 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'London Road, Chatteris, Cambs, PE16 6LW' with Id '3009' has been published.
+ 2017-03-22 08:42:34,796 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:36,139 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'The Row, Sutton, Ely, Cambs, CB6 2PD' with Id '3010' has been published.
+ 2017-03-22 08:42:36,358 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:38,579 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Doddington Road, Benwick, March, Cambs, PE15 0UT' with Id '3110' has been published.
+ 2017-03-22 08:42:38,745 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:41,073 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Briar Close, Chatteris, Cambs, PE16 6HS' with Id '3012' has been published.
+ 2017-03-22 08:42:41,271 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:41,652 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Railway Lane, Chatteris, Cambs, PE16 6NF' with Id '3013' has been published.
+ 2017-03-22 08:42:41,807 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:43,254 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'St. Peters Road, March, Cambs, PE15 9NA' with Id '3014' has been published.
+ 2017-03-22 08:42:43,491 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:45,260 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Linden Drive, Chatteris, Cambs, PE16 6DZ' with Id '3015' has been published.
+ 2017-03-22 08:42:45,499 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:46,494 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Westbourne Road, Chatteris, Cambs, PE16 6HH' with Id '3016' has been published.
+ 2017-03-22 08:42:46,670 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:47,623 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Willow Tree Close, Chatteris, Cambs, PE16 6FA' with Id '3017' has been published.
+ 2017-03-22 08:42:47,819 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:49,415 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'The Pastures, Chatteris, Cambs, PE16 6QS' with Id '3018' has been published.
+ 2017-03-22 08:42:49,592 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:50,358 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Westfield Road, Manea, March, Cambs, PE15 0LS' with Id '3020' has been published.
+ 2017-03-22 08:42:50,539 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:51,836 [P11548/D2/T14] INFO  umbraco.content - Save Xml to file...
+ 2017-03-22 08:42:51,973 [P11548/D2/T14] INFO  umbraco.content - Saved Xml to file.
+ 2017-03-22 08:42:52,211 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'North Brink, Wisbech, PE13 4UL' with Id '3021' has been published.
+ 2017-03-22 08:42:52,560 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:54,397 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Bridge Lane, Wimblington, March, PE15 0RS' with Id '3022' has been published.
+ 2017-03-22 08:42:54,601 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:55,528 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Fairbairn Way, Chatteris, Cambs, PE16 6GX' with Id '3023' has been published.
+ 2017-03-22 08:42:55,764 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:56,950 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'York Road, Chatteris, PE16 6EB' with Id '3024' has been published.
+ 2017-03-22 08:42:57,111 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:42:58,717 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Stocking Drove, Chatteris, Cambs, PE16 6SH' with Id '3025' has been published.
+ 2017-03-22 08:42:58,913 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:00,186 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Benwick Road, Doddington, March, PE15 0TX' with Id '3026' has been published.
+ 2017-03-22 08:43:00,413 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:01,400 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Fen View, Chatteris, Cambs, PE16 6SY' with Id '3027' has been published.
+ 2017-03-22 08:43:01,592 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:03,145 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Fairbairn Way, Chatteris, Cambs, PE16 6GX (1)' with Id '3127' has been published.
+ 2017-03-22 08:43:03,348 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:04,694 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Doddington Road, Wimblington, March, Cambs, PE15 0RD' with Id '3028' has been published.
+ 2017-03-22 08:43:04,821 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:05,503 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'East Park Street, Chatteris, Cambs, PE16 6LD' with Id '3030' has been published.
+ 2017-03-22 08:43:05,695 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:07,193 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Gaunt Farm Drove, Gaunt Fen, Chatteris, Cambs, PE16 6TF' with Id '3031' has been published.
+ 2017-03-22 08:43:07,437 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:08,721 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Station Street, Chatteris, Cambs, PE16 6EL' with Id '3032' has been published.
+ 2017-03-22 08:43:08,968 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:10,365 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Green Street, March, Cambs PE15 9DY' with Id '3033' has been published.
+ 2017-03-22 08:43:10,549 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:11,385 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Plot 4, Mill Road, Murrow, Wisbech, PE13 4HF' with Id '3035' has been published.
+ 2017-03-22 08:43:11,601 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:12,218 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Plot 5, Mill Road, Murrow, Wisbech, PE13 4HF' with Id '3036' has been published.
+ 2017-03-22 08:43:12,362 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:13,882 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Doddington Road, Benwick, PE15 0UT' with Id '3037' has been published.
+ 2017-03-22 08:43:14,096 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:15,270 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Westway Place, Witcham, Ely, Cambs, CB26 2LG' with Id '3038' has been published.
+ 2017-03-22 08:43:15,502 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:16,381 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Bridge Street, Chatteris, Cambs, PE16 6RD' with Id '3039' has been published.
+ 2017-03-22 08:43:16,604 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:18,047 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Queensway, Chatteris, Cambs, PE16 6DD' with Id '3040' has been published.
+ 2017-03-22 08:43:18,307 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:19,796 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'The Elms, Chatteris, Cambs, PE16 6JN' with Id '3041' has been published.
+ 2017-03-22 08:43:19,954 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:20,992 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Birch Avenue, Chatteris, Cambs, PE16 6JJ' with Id '3042' has been published.
+ 2017-03-22 08:43:21,264 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:22,549 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Southampton Place, Chatteris, Cambs, PE16 6LR (1)' with Id '3043' has been published.
+ 2017-03-22 08:43:22,757 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:25,253 [P11548/D2/T12] INFO  umbraco.content - Save Xml to file...
+ 2017-03-22 08:43:25,378 [P11548/D2/T12] INFO  umbraco.content - Saved Xml to file.
+ 2017-03-22 08:43:25,794 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Albert Way, Chatteris, Cambs, PE16 6US' with Id '3044' has been published.
+ 2017-03-22 08:43:26,066 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:27,535 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Tribune Close, Chatteris, PE16 6UY' with Id '3045' has been published.
+ 2017-03-22 08:43:27,743 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:28,492 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'West Street, Chatteris, Cambs, PE16 6HA' with Id '3047' has been published.
+ 2017-03-22 08:43:28,736 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:29,733 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Bedford View, Manea, March, Cambs, PE15 0US' with Id '3048' has been published.
+ 2017-03-22 08:43:30,133 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:31,078 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Station Road, Manea, March, Cambs, PE15 0FP' with Id '3049' has been published.
+ 2017-03-22 08:43:31,305 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:33,087 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'High Street, Manea, March, Cambs, PE15 0JA' with Id '3050' has been published.
+ 2017-03-22 08:43:33,397 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:34,850 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Doddington Road, Chatteris, PE16 6UA' with Id '3052' has been published.
+ 2017-03-22 08:43:35,034 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:36,132 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Saddlers Way, Chatteris, Cambs, PE16 6BL' with Id '3053' has been published.
+ 2017-03-22 08:43:36,330 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:37,475 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Angoods Lane, Chatteris, Cambs, PE16 6RG' with Id '3054' has been published.
+ 2017-03-22 08:43:37,707 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:39,510 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Station Road, Manea, March, Cambs, PE15 0JL' with Id '3055' has been published.
+ 2017-03-22 08:43:39,876 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:41,329 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Gull Road, Guyhirn, Wisbech, PE13 4ER' with Id '3056' has been published.
+ 2017-03-22 08:43:41,566 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:42,969 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Gull Road, Guyhirn, Wisbech, PE13 4ER (1)' with Id '3057' has been published.
+ 2017-03-22 08:43:43,121 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:44,286 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Gull Road, Guyhirn, Wisbech, PE13 4LR' with Id '3058' has been published.
+ 2017-03-22 08:43:44,502 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:45,932 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Huntingdon Road, Chatteris, PE16 6EG' with Id '3059' has been published.
+ 2017-03-22 08:43:46,197 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:47,385 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'High Street, Benwick, March, Cambs, PE15 0XA' with Id '3060' has been published.
+ 2017-03-22 08:43:47,618 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:48,755 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Station Road, Manea, March, Cambs, PE15 0HE' with Id '3061' has been published.
+ 2017-03-22 08:43:49,091 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:50,902 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Tribune Close, Chatteris, PE16 6UY (1)' with Id '3062' has been published.
+ 2017-03-22 08:43:51,049 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:51,573 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Farriers Gate, Chatteris, Cambs PE16 6AY' with Id '3063' has been published.
+ 2017-03-22 08:43:51,774 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:52,790 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Glebe Close, Manea, March, Cambs, PE15 0LR' with Id '3064' has been published.
+ 2017-03-22 08:43:53,180 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:56,226 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Larham Way, Chatteris, Cambs, PE16 6PH' with Id '3065' has been published.
+ 2017-03-22 08:43:56,465 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:57,247 [P11548/D2/T12] INFO  umbraco.content - Save Xml to file...
+ 2017-03-22 08:43:57,376 [P11548/D2/T12] INFO  umbraco.content - Saved Xml to file.
+ 2017-03-22 08:43:58,158 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Main Road, Parson Drove, Wisbech, PE13 4LA' with Id '3066' has been published.
+ 2017-03-22 08:43:58,387 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:43:58,858 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Land On The West Side Of Sports Club, Off Robingoodfellows Lane, March' with Id '3067' has been published.
+ 2017-03-22 08:43:59,100 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:00,256 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Farriers Gate, Chatteris, Cambs, PE16 6AY' with Id '3068' has been published.
+ 2017-03-22 08:44:00,554 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:02,653 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Doddington Road, Chatteris, PE16 6UA (1)' with Id '3069' has been published.
+ 2017-03-22 08:44:02,964 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:04,053 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Gull Way, Chatteris, Cambs, PE16 6DT' with Id '3070' has been published.
+ 2017-03-22 08:44:04,258 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:05,839 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'London Road, Chatteris, Cambs, PE16 6LW (1)' with Id '3071' has been published.
+ 2017-03-22 08:44:06,243 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:07,922 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'York Road, Chatteris, Cambs, PE16 6EB' with Id '3072' has been published.
+ 2017-03-22 08:44:08,150 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:09,436 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Fairview Drive, Chatteris, Cambs, PE16 6QH' with Id '3073' has been published.
+ 2017-03-22 08:44:09,624 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:10,706 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Pond Close, Wimblington, March, PE15 0RL' with Id '3074' has been published.
+ 2017-03-22 08:44:11,031 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:13,200 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Station Street, Chatteris, Cambs, PE16 6EL (1)' with Id '3075' has been published.
+ 2017-03-22 08:44:13,552 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:14,579 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'New Park, March, Cambs, PE15 8RT' with Id '3076' has been published.
+ 2017-03-22 08:44:14,746 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:16,094 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Selwyn Corner, Guyhirn, Wisbech, PE13 4EG' with Id '3077' has been published.
+ 2017-03-22 08:44:16,277 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:18,111 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Gipson Close, Chatteris, Cambs, PE16 6PQ' with Id '3078' has been published.
+ 2017-03-22 08:44:18,346 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:20,036 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'London Road, Chatteris, Cambs, PE16 6LW (2)' with Id '3079' has been published.
+ 2017-03-22 08:44:20,257 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:21,804 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'St. Pauls Drive, Chatteris, Cambs, PE16 6DG' with Id '3080' has been published.
+ 2017-03-22 08:44:22,039 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:23,396 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Lode Way, Chatteris, Cambs, PE16 6TN' with Id '3081' has been published.
+ 2017-03-22 08:44:23,575 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:24,601 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Eastbourne Road, Chatteris, Cambs, PE16 6TE' with Id '3083' has been published.
+ 2017-03-22 08:44:24,961 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:27,723 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'St. Francis Drive, Chatteris, Cambs, PE16 6BS' with Id '3084' has been published.
+ 2017-03-22 08:44:28,076 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:29,157 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'The Junction, March, Cambs, PE15 8NY' with Id '3085' has been published.
+ 2017-03-22 08:44:29,379 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:31,676 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Westfield Road, Manea, March, Cambs, PE15 0LS (1)' with Id '3086' has been published.
+ 2017-03-22 08:44:31,866 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:32,078 [P11548/D2/T36] INFO  umbraco.content - Save Xml to file...
+ 2017-03-22 08:44:32,210 [P11548/D2/T36] INFO  umbraco.content - Saved Xml to file.
+ 2017-03-22 08:44:33,079 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Newgate Street, Doddington, March, Cambs, PE15 0SR' with Id '3087' has been published.
+ 2017-03-22 08:44:33,305 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:34,729 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Farriers Gate, Chatteris, Cambs, PE16 6AY (1)' with Id '3088' has been published.
+ 2017-03-22 08:44:34,932 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:36,489 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Eaton Estate, Wimblington, March, Cambs PE15 0QE' with Id '3089' has been published.
+ 2017-03-22 08:44:36,793 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:38,951 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Bridge Street, Chatteris, Cambs, PE16 6RN' with Id '3090' has been published.
+ 2017-03-22 08:44:39,306 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:40,105 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Plot 2, Mill Road, Murrow, PE13 4HF' with Id '3091' has been published.
+ 2017-03-22 08:44:40,301 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:41,542 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Cricketers Way, Chatteris, Cambs, PE16 6UR' with Id '3092' has been published.
+ 2017-03-22 08:44:41,760 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:43,283 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Station Road, Manea, March, Cambs, PE15 0FP (1)' with Id '3093' has been published.
+ 2017-03-22 08:44:43,482 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:44,823 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Station Road, Manea, March, Cambs, PE15 0FP (2)' with Id '3094' has been published.
+ 2017-03-22 08:44:45,081 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:46,541 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Station Road, Manea, March, Cambs, PE15 0FP (3)' with Id '3095' has been published.
+ 2017-03-22 08:44:46,760 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:48,546 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Millfield Close, Chatteris, Cambs, PE16 6SS' with Id '3096' has been published.
+ 2017-03-22 08:44:48,750 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:50,268 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'East Street, Manea, March, Cambs, PE15 0JJ (1)' with Id '3097' has been published.
+ 2017-03-22 08:44:50,479 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:52,391 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'St. James Close, Chatteris, PE16 6FJ' with Id '3098' has been published.
+ 2017-03-22 08:44:52,699 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:54,335 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Walden Close, Doddington, March, Cambs PE15 0TW' with Id '3099' has been published.
+ 2017-03-22 08:44:54,561 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:55,896 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Beechings Close, Wisbech St. Mary, Wisbech, PE13 4SS' with Id '3100' has been published.
+ 2017-03-22 08:44:56,138 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:56,841 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Kingfisher Close, Chatteris, PE16 6TP' with Id '3101' has been published.
+ 2017-03-22 08:44:57,068 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:58,613 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Hillcrest Drive, Guyhirn, Wisbech, Cambs, PE13 4ET' with Id '3102' has been published.
+ 2017-03-22 08:44:58,837 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:44:59,991 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Treeway, Chatteris, Cambs, PE16 6EN' with Id '3103' has been published.
+ 2017-03-22 08:45:00,249 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:45:02,914 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Parkview Lane, Manea, March, PE15 0LZ' with Id '3104' has been published.
+ 2017-03-22 08:45:03,152 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:45:04,609 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Reed Close, Chatteris, PE16 6PD' with Id '3105' has been published.
+ 2017-03-22 08:45:04,853 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:45:06,128 [P11548/D2/T15] ERROR CMSImportLibrary.Providers.ImportProviders.Content.ContentImportProvider - CMSImport:A record failed to import for alias 
+System.ArgumentException: Cannot save content with empty name.
+   at Umbraco.Core.Services.ContentService.Save(IContent content, Boolean changeState, Int32 userId, Boolean raiseEvents)
+   at Umbraco.Core.Services.ContentService.Umbraco.Core.Services.IContentServiceOperations.Save(IContent content, Int32 userId, Boolean raiseEvents)
+   at Umbraco.Core.Services.ContentService.Save(IContent content, Int32 userId, Boolean raiseEvents)
+   at CMSImportLibrary.Providers.ImportProviders.Content.ContentImportProvider.(ImportState , Int32 , ImportStatistics , String )
+ 2017-03-22 08:45:07,202 [P11548/D2/T42] INFO  umbraco.content - Save Xml to file...
+ 2017-03-22 08:45:07,315 [P11548/D2/T42] INFO  umbraco.content - Saved Xml to file.
+ 2017-03-22 08:45:09,172 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Fallow Corner Drove, Manea, March, PE15 OLT' with Id '3106' has been published.
+ 2017-03-22 08:45:09,463 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:45:11,095 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Williams Way, Manea, March, Cambs, PE15 0HU' with Id '3107' has been published.
+ 2017-03-22 08:45:11,340 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:45:11,814 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'St. Johns Chase, March, PE15 8UQ' with Id '3108' has been published.
+ 2017-03-22 08:45:12,080 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:45:13,381 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Huntingdon Road, Chatteris, Cambs, PE16 6EF' with Id '3109' has been published.
+ 2017-03-22 08:45:13,703 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:45:14,979 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'High Street, Manea, March, Cambs, PE15 0JD' with Id '3143' has been published.
+ 2017-03-22 08:45:15,245 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:45:16,551 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Drake Avenue, Chatteris, Cambs, PE16 6DU' with Id '3156' has been published.
+ 2017-03-22 08:45:16,788 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:45:18,148 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'St. Johns Chase, March, PE15 8RL' with Id '3166' has been published.
+ 2017-03-22 08:45:18,387 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:45:18,761 [P11548/D2/T15] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'Triumph House, St. Johns Chase, March, PE15 8RL' with Id '3174' has been published.
+ 2017-03-22 08:45:19,012 [P11548/D2/T15] INFO  Umbraco.Core.Services.ContentService - Call was made to ContentService.Publish, use PublishWithStatus instead since that method will provide more detailed information on the outcome
+ 2017-03-22 08:45:19,043 [P11548/D2/T15] INFO  CMSImport.Extensions.Providers.ImportProviders.ImportProvider - CMSImport:Import task JUPIX Sales Property Import finished, Records in datasource: 113, Records  Added 0, Records  Updated 112, Records skipped 0, Records deleted 0, Errors 1, duration 00:03:10 
+ 2017-03-22 08:45:22,981 [P11548/D2/T42] INFO  umbraco.content - Save Xml to file...
+ 2017-03-22 08:45:23,144 [P11548/D2/T42] INFO  umbraco.content - Saved Xml to file.
+ 2017-03-22 08:52:56,521 [P11548/D2/T62] WARN  Umbraco.Web.PublishedCache.XmlPublishedCache.PublishedMediaCache - Failed (10 times) to retrieve medias from Examine index and had to load them from DB. This may indicate that the Examine index is corrupted.

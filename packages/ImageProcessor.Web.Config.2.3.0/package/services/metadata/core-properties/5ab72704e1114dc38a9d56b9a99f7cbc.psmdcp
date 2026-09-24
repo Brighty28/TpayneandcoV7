@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?><coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties"><dc:creator>James Jackson-South</dc:creator><dc:description>Adds configuration to your ImageProcessor.Web solution to allow you to override the default settings.
+
+If you use ImageProcessor.Web please get in touch via my twitter @james_m_south
+
+Feedback is always welcome</dc:description><dc:identifier>ImageProcessor.Web.Config</dc:identifier><version>2.3.0.0</version><dc:language>en-GB</dc:language><keywords>Image Resize Crop Rotate Quality Watermark Gif Jpg Jpeg Bitmap Png Tiff ASP Cache EXIF</keywords><dc:title>ImageProcessor.Web.Config</dc:title><dc:subject>NuGet Package Explorer</dc:subject></coreProperties>
