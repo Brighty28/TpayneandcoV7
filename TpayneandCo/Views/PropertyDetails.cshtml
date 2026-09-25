@@ -1,0 +1,292 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.UmbPropertyDetails>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using System.Globalization;
+@{
+    Layout = "umbLayout.cshtml";
+    var pageTitle = string.IsNullOrWhiteSpace(CurrentPage.Title)
+        ? CurrentPage.Name
+        : CurrentPage.Title;
+
+    var imagesList = Model.Content.GetPropertyValue<string>("images").Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse);
+    var imagesCollection = Umbraco.TypedMedia(imagesList).Where(x => x != null);
+    var propertyPrice = Model.Content.GetPropertyValue<string>("department") == "Sales" ? CurrentPage.Price : CurrentPage.Rent;
+
+}
+
+<div id="main-wrapper">
+    <div id="main" class="container">
+        <div class="row">
+            <div class="9u 12u(mobile) important(mobile)">
+                <div class="content content-left">
+                    <!-- Content -->
+                    <article class="box page-content">
+                        <header>
+                            <h2>@pageTitle</h2>
+                            <p>@(String.Format(new CultureInfo("en-GB"), "{0:C}", propertyPrice) )</p>
+                        </header>
+                        <section>
+                            <div id="showcase-loader" style="display: none;"></div>
+                            <div id="owl-demo">
+                                @foreach (var image in imagesCollection)
+                                {
+                                    <a href="@image.Url" class="thumbnail">
+                                        <img class="example-image img-responsive" src="@image.Url" alt="@image.Name">
+                                    </a>
+                                }
+                            </div>
+                            <div id="owl-thumbnails" style="">
+                                <div class="col-xs-1">
+                                    <div class="showcase-thumbnail-button-backward owl-prev" style="float: left;">
+                                        <span class="showcase-thumbnail-horizontal"><span>Left</span></span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-8">
+                                    <div id="owl-gallery">
+                                        @foreach (var image in imagesCollection)
+                                        {
+                                            <div class="item">
+                                                <a href="#" data-slide="@image.SortOrder">
+                                                    <img class="img-responsive" src="@image.Url" alt="@image.Name" height="200px" width="200px">
+                                                </a>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-xs-1">
+                                    <div class="showcase-thumbnail-button-forward owl-next" style="float: left;">
+                                        <span class="showcase-thumbnail-horizontal"><span>Left</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </article>
+                </div>
+            </div>
+            <div class="3u 12u(mobile)">
+                <div class="sidebar">
+                    <!-- Sidebar -->
+                    <section>
+                        <input type="button" value="<< Back to property listings" onclick="history.back(-1)" />
+                        @*<a href="javascript:history.go(-1)" rel="nofollow"><< Back to property listings</a>*@
+                    </section>
+                    <section>
+                        <h2 class="major"><span>Summary</span></h2>
+                        @*<p>@Html.Raw(Model.Content.GetPropertyValue<string>("clientName").StripHtml())</p>*@
+                        <p>@CurrentPage.branchName</p>
+
+                        <a href="tel:01354 696700">
+                            <strong>01354 696700</strong>
+                        </a>
+                    </section>
+                    <section>
+                        <h2 class="major"><span>Share This Property</span></h2>
+                        <div class="addthis_inline_share_toolbox_9492"></div>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="12u">
+                <div class="tabbable-panel">
+                    <div class="tabbable-line">
+                        <ul class="nav nav-tabs ">
+                            <li class="active">
+                                <a href="#description" data-toggle="tab">
+                                    Description
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#profile" data-toggle="tab">
+                                    Map View
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#floorplan" data-toggle="tab">
+                                    Floorplan
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="description">
+                                <h3>Key Features</h3>
+                                <ul>
+                                    <li>@CurrentPage.propertyFeature1</li>
+                                    <li>@CurrentPage.propertyFeature2</li>
+                                    <li>@CurrentPage.propertyFeature3</li>
+                                    <li>@CurrentPage.propertyFeature4</li>
+                                </ul>
+
+                                <h3>Full Description</h3>
+
+                                <p>@Html.Raw(CurrentPage.FullDescription)</p>
+                                <hr>
+                                @if (CurrentPage.HasValue("brochures"))
+                                {
+                                    <h3>More information</h3>
+                                    <a target="_blank" href="@Html.Raw(Model.Content.GetPropertyValue<string>("brochures").StripHtml())">
+                                        <span> Brochure</span> <i class="fa fa-link"></i>
+                                    </a>
+                                }
+                                <hr>
+                                @if (CurrentPage.HasValue("epcGraphs"))
+                                {
+                                    <h3>Energy Performance Certificate (EPC)</h3>
+                                    <p>
+                                        <a target="_blank" href="@Html.Raw(Model.Content.GetPropertyValue<string>("epcGraphs").StripHtml())">
+                                            View EPC Graph for this property
+                                        </a>
+                                    </p>
+                                    <img src="@Html.Raw(Model.Content.GetPropertyValue<string>("epcGraphs").StripHtml())" />
+                                }
+
+                            </div>
+                            <div class="tab-pane" id="profile">
+                                <div id="map-wrapper">
+                                    <div id="google-map"></div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="floorplan">
+                                <p>
+                                    <img class="img-responsive" src="@Html.Raw(Model.Content.GetPropertyValue<string>("floorplans").StripHtml())" />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+@*<script>
+    var map;
+
+    jQuery(function($) {
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var latlng = new google.maps.LatLng(-34.397, 150.644);
+            var myOptions = {
+                zoom: 8,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+            console.dir(map);
+            google.maps.event.trigger(map, 'resize');
+
+            $('a[href="#profile"]').on('shown', function(e) {
+                google.maps.event.trigger(map, 'resize');
+            });
+            $("#map_canvas").css("height", 400);
+        });
+    });
+        </script>*@
+<script>
+var map, marker;
+jQuery(function ($) {
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+
+	//function initMap() {
+
+		var mapOptions = {
+		  	center: new google.maps.LatLng( @CurrentPage.Latitude,@CurrentPage.Longitude),
+		  //center: new google.maps.LatLng( 51.5286416,-0.1015987),
+		  	zoom: 12,
+		  	scrollwheel: false,
+		  	streetViewControl: true,
+			disableDefaultUI: true
+		};
+
+		map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
+
+		var customIcon = new google.maps.MarkerImage(
+		'http://www.tpayneandco.co.uk/wp-content/themes/realty/lib/images/map-marker/map-marker-gold-fat.png',
+		null, // size is determined at runtime
+		null, // origin is 0,0
+		null, // anchor is bottom center of the scaled image
+		new google.maps.Size(50, 69)
+		);
+			var markerClusterOptions = {
+			gridSize: 60, // Default: 60
+			maxZoom: 14,
+			styles: [{
+				width: 50,
+				height: 50,
+				url: "http://www.tpayneandco.co.uk/wp-content/themes/realty/lib/images/map-marker/map-marker-gold-round.png"
+			}]
+		};
+
+		var marker = new google.maps.Marker({
+    		map: map,
+			position: new google.maps.LatLng( @CurrentPage.Latitude,@CurrentPage.Longitude),
+    		//position: new google.maps.LatLng( 51.5286416,-0.1015987),
+    		icon: customIcon,
+    		title: 'Situated in a popular village location, this well presented 3 bedroom modern detached house has an enclosed rear garden, garage and driveway.',
+		  });
+
+		var propertyThumbnail = '<img width="300" height="225" src="@imagesCollection.First().Url" />';
+		//var propertyThumbnail = '<img width="300" height="225" src="http://www.tpayneandco.co.uk/wp-content/uploads/2017/02/DSC09890-300x225.jpg" class="attachment-medium wp-post-image" alt="DSC09890" />';
+		var propertyThumbnail=propertyThumbnail.replace(/'/g, '&quot;');
+    	var propertyPrice = '@String.Format(new CultureInfo("en-GB"), "{0:C}", CurrentPage.Price)';//'£210,000';
+    	var propertyPrice=propertyPrice.replace(/'/g, '&quot;', '&#163;');
+    	//var propertyTitle = '<h5 class="title">Situated in a popular village location, this well presented 3 bedroom modern detached house has an enclosed rear garden, garage and driveway.</h5>';
+    	//var propertyTitle=propertyTitle.replace(/'/g, '&quot;');
+		// http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/docs/reference.html
+		var infobox = new InfoBox({
+	  	content: 	'<div class="map-marker-wrapper">'+
+    						'<div class="map-marker-container">'+
+	    						'<div class="arrow-down"></div>'+
+									propertyThumbnail+
+									'<div class="content">'+
+									//propertyTitle+
+									propertyPrice+
+									'</div>'+
+								'</div>'+
+					    '</div>',
+	  disableAutoPan: false,
+	  pixelOffset: new google.maps.Size(-33, -90),
+	  zIndex: null,
+	  alignBottom: true,
+	  closeBoxURL: "http://www.tpayneandco.co.uk/wp-content/themes/realty/lib/images/close.png",
+	  infoBoxClearance: new google.maps.Size(50, 50)
+	});
+		//alert("got latlng");
+	function getLatLng(callback) {
+		latLng = new google.maps.LatLng(@CurrentPage.Latitude,@CurrentPage.Longitude),
+		//latLng = new google.maps.LatLng(52.65544269999999, 0.09992690000001403);
+		callback(latLng);
+	}
+
+  getLatLng(function(latLng) {
+
+	  marker.setPosition(latLng);
+	  map.setCenter(latLng);
+	  map.setZoom(14);
+   	google.maps.event.addListener(marker, 'click', function() {
+	  	infobox.open(map, marker);
+	    map.panTo(latLng);
+		});
+
+  });
+
+	// Maps Fully Loaded: Hide + Remove Spinner
+	//google.maps.event.addListenerOnce(map, 'idle', function() {
+		//jQuery('.spinner').fadeTo(800, 0.5);
+		//setTimeout(function() {
+		  //jQuery('.spinner').remove();
+		//}, 800);
+	//});
+
+
+//}
+
+	//google.maps.event.addDomListener(window, 'load', initMap);
+	//$('a[href="#profile"]').on('shown', function(e) {
+		//google.maps.event.addDomListener(window, 'resize', initMap);
+	//});
+	//$("#google-map").css("height", 400);
+	});
+
+});
+</script>

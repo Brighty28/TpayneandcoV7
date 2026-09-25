@@ -1,0 +1,1002 @@
+@using System.Globalization
+@using System.Text
+@using System.Xml
+@using System.Xml.Linq
+@using HtmlAgilityPack
+@using System.Text.RegularExpressions
+@using CMSImport.Extensions.TypeExtensions
+@using Examine
+@using Umbraco.Core.Logging
+@using Umbraco.Web.Models
+
+@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@{
+
+    int parsedInt;
+
+    // Parse querystring / macro parameter
+    var model = new SearchViewModel
+    {
+        SearchTerms = new Dictionary<string, string>(),
+        Location = "" + Request["Location"],//.ToLower(CultureInfo.InvariantCulture),
+        //SalesLocation = SalesLocation.Any,// ?? (SalesLocation)Enum.Parse(typeof(SalesLocation), Request["Location"]),//; Convert.ToInt32(Request["Location"]),
+        MinBedrooms = Convert.ToInt32(Request["MinBedrooms"]),
+        MinPrice = Convert.ToInt32(Request["MinPrice"]),
+        MaxPrice = Convert.ToInt32(Request["MaxPrice"]),
+        SortOrder = "" + Request["orderby"],
+        Department = "" + Request["department"],
+        SearchTerm = "Location=" + Request["Location"] + "&" + "MinPrice=" + Request["MinPrice"] + "&" + "MaxPrice=" + Request["MaxPrice"] + "&" + "department=" + Request["department"] + "&" + "orderby=" + Request["orderby"],
+
+
+        CurrentPage = int.TryParse(Request["p"], out parsedInt) ? parsedInt : 1,
+
+        PageSize = GetMacroParam(Model, "pageSize", s => int.Parse(s), 10),
+        RootContentNodeId = GetMacroParam(Model, "rootContentNodeId", s => int.Parse(s), -1),
+        RootMediaNodeId = GetMacroParam(Model, "rootMediaNodeId", s => int.Parse(s), -1),
+        IndexType = GetMacroParam(Model, "indexType", s => s.ToLower(CultureInfo.InvariantCulture), ""),
+        SearchFields = GetMacroParam(Model, "searchFields", s => SplitToList(s), new List<string> { "nodeName", "metaTitle", "metaDescription", "metaKeywords", "bodyText" }),
+        PreviewFields = GetMacroParam(Model, "previewFields", s => SplitToList(s), new List<string> { "bodyText" }),
+        PreviewLength = GetMacroParam(Model, "previewLength", s => int.Parse(s), 250),
+        HideFromSearchField = GetMacroParam(Model, "hideFromSearchField", "umbracoNaviHide"),
+        SearchFormLocation = GetMacroParam(Model, "searchFormLocation", s => s.ToLower(), "bottom")
+    };
+
+    // Validate values
+    if (model.IndexType != UmbracoExamine.IndexTypes.Content &&
+        model.IndexType != UmbracoExamine.IndexTypes.Media)
+    {
+        model.IndexType = "";
+    }
+
+    if (model.SearchFormLocation != "top"
+        && model.SearchFormLocation != "bottom"
+        && model.SearchFormLocation != "both"
+        && model.SearchFormLocation != "none")
+    {
+        model.SearchFormLocation = "bottom";
+    }
+
+    // ====================================================
+    // Comment the next if statement out if you want a root
+    // node id of -1 to search content across all sites
+    // and not just the current site.
+    // ====================================================
+    if (model.RootContentNodeId <= 0)
+    {
+        model.RootContentNodeId = Model.Content.AncestorOrSelf(1).Id;
+    }
+
+    // If searching on umbracoFile, also search on umbracoFileName
+    if (model.SearchFields.Contains("umbracoFile") && !model.SearchFields.Contains("umbracoFileName"))
+    {
+        model.SearchFields.Add("umbracoFileName");
+    }
+
+    // Check the search term isn't empty
+    var items = model.SearchTerm.Split(new[] { '(', ')' }, StringSplitOptions.RemoveEmptyEntries)
+       .Select(s => s.Split(new[] { '=' }));
+
+    if (items.Any())// !string.IsNullOrWhiteSpace(model.SearchTerm))
+    {
+        // Add terms to search terms
+        foreach (var item in items)
+        {
+            model.SearchTerms.Add(item[0], item[1]);
+        }
+
+        // Tokenize the search term
+        //model.SearchTerms = Tokenize(model.SearchTerm);
+
+        // Perform the search
+        var searcher = ExamineManager.Instance.CreateSearchCriteria();
+        //var searcher = ExamineManager.Instance.SearchProviderCollection["InternalSearcher"];
+        var query = searcher.NodeTypeAlias("umbPropertyDetails");
+        //query.AppendFormat("-{0}:1 ", model.HideFromSearchField);
+        //query.Not().Field("umbracoNaviHide", "1");
+
+        // Set search path
+        var contentPathFilter = model.RootContentNodeId > 0
+            ? string.Format("__IndexType:{0} +searchPath:{1} -template:0", UmbracoExamine.IndexTypes.Content, model.RootContentNodeId)
+            : string.Format("__IndexType:{0} -template:0", UmbracoExamine.IndexTypes.Content);
+
+        var mediaPathFilter = model.RootMediaNodeId > 0
+            ? string.Format("__IndexType:{0} +searchPath:{1}", UmbracoExamine.IndexTypes.Media, model.RootMediaNodeId)
+            : string.Format("__IndexType:{0}", UmbracoExamine.IndexTypes.Media);
+
+        //switch (model.IndexType)
+        //{
+        //    case UmbracoExamine.IndexTypes.Content:
+        //        query.AppendFormat("+({0}) ", contentPathFilter);
+        //        break;
+        //    case UmbracoExamine.IndexTypes.Media:
+        //        query.AppendFormat("+({0}) ", mediaPathFilter);
+        //        break;
+        //    default:
+        //        query.AppendFormat("+(({0}) ({1})) ", contentPathFilter, mediaPathFilter);
+        //        break;
+        //}
+
+        // Ensure page contains all search terms in some way
+        //groupedOr.AppendFormat("{0}:{1}* ", searchField, term.Value);
+        //var region = string.IsNullOrEmpty(model.Location) ? "any" : model.Location;
+        var region = string.IsNullOrEmpty(model.Location) ? SalesLocation.Any : (SalesLocation)Enum.Parse(typeof(SalesLocation), model.Location);// model.Location;
+
+        if (region != SalesLocation.Any)//if (region != "any")
+        {
+            var regionId = (int)region;
+            query.And().Field("regionID", regionId.ToString());//query.And().Field("regionID", model.Location);
+        }
+        else
+        {
+            model.Department = CurrentPage.Id == 1106 ? "sales" : "lettings";
+            //model.SearchTerm = "Location=" + SalesLocation.Any + "&" + "MinPrice=" + model.MinPrice + "&" + "MaxPrice=" + model.MaxPrice + "&" + "department=" + model.Department + "&" + "orderby=" + model.SortOrder;
+            model.SearchTerm = "Location=any&" + "MinPrice=" + model.MinPrice + "&" + "MaxPrice=" + model.MaxPrice + "&" + "department=" + model.Department + "&" + "orderby=" + model.SortOrder;
+        }
+
+        var paddedLower = model.MinPrice.ToString("D6");
+        var paddedHigher = model.MaxPrice.ToString("D6");
+
+        if (model.MinPrice > 0 && model.MaxPrice > 0)
+        {
+            query.And()
+                    .Range(model.Department == "sales" ? "paddedPrice" : "paddedRent", paddedLower, paddedHigher, true,
+                        true);
+        }
+        else if (model.MinPrice > 0 && model.Department == "sales")
+        {
+            model.MaxPrice = 900000;
+            paddedHigher = model.MaxPrice.ToString("D6");
+            query.And().Range("paddedPrice", paddedLower, paddedHigher, true, true);
+        }
+        else if (model.MaxPrice > 0 && model.Department == "sales")
+        {
+            model.MinPrice = 50000;
+            paddedLower = model.MinPrice.ToString("D6");
+            query.And().Range("paddedPrice", paddedLower, paddedHigher, true, true);
+        }
+        else if (model.MinPrice > 0 && model.Department == "lettings")
+        {
+            model.MaxPrice = 3000;
+            var higher = model.MaxPrice.ToString("D6");
+            query.And().Range("paddedRent", paddedLower, higher, true, true);
+        }
+        else if (model.MaxPrice > 0 && model.Department == "lettings")
+        {
+            model.MinPrice = 100;
+            paddedLower = model.MinPrice.ToString("D6");
+            query.And().Range("paddedRent", paddedLower, paddedHigher, true, true);
+        }
+
+        if (model.MinBedrooms > 0)
+        {
+            query.And().Range("propertyBedrooms", model.MinBedrooms.ToString(), "5", true, true);
+            //query.And().Field("propertyBedrooms", model.MinBedrooms.ToString());
+        }
+
+        query.And().Field("department", model.Department);
+
+        List<SearchResult> results = new List<SearchResult>();
+        if (model.Department == "sales")
+        {
+            switch (model.SortOrder)
+            {
+                case "price-low":
+                    results = ExamineManager.Instance.Search(query.Compile())
+                        .OrderBy(r => int.Parse(r.Fields["price"])).ToList();
+                    break;
+                case "price-high":
+                    results = ExamineManager.Instance.Search(query.Compile())
+                        .OrderByDescending(x => int.Parse(x.Fields["price"])).ToList();
+                    break;
+                default:
+                    results = ExamineManager.Instance.Search(query.Compile())
+                        .OrderByDescending(x => int.Parse(x.Fields["price"])).ToList();
+                    break;
+            }
+        }
+        else
+        {
+            switch (model.SortOrder)
+            {
+                case "price-low":
+                    results = ExamineManager.Instance.Search(query.Compile())
+                        .OrderBy(r => int.Parse(r.Fields["rent"])).ToList();
+                    break;
+                case "price-high":
+                    results = ExamineManager.Instance.Search(query.Compile())
+                        .OrderByDescending(x => int.Parse(x.Fields["rent"])).ToList();
+                    break;
+                default:
+                    results = ExamineManager.Instance.Search(query.Compile())
+                        .OrderByDescending(x => int.Parse(x.Fields["rent"])).ToList();
+                    break;
+            }
+        }
+        //var results = ExamineManager.Instance.Search(query.Compile())
+        //.Where(x => (
+        //   !Umbraco.IsProtected(int.Parse(x.Fields["id"]), x.Fields["path"]) ||
+        // (
+        //   Umbraco.IsProtected(int.Parse(x.Fields["id"]), x.Fields["path"]) &&
+        // Umbraco.MemberHasAccess(int.Parse(x.Fields["id"]), x.Fields["path"])
+        //)) && (
+        //  (x.Fields["__IndexType"] == UmbracoExamine.IndexTypes.Content && Umbraco.TypedContent(int.Parse(x.Fields["id"])) != null) ||
+        //(x.Fields["__IndexType"] == UmbracoExamine.IndexTypes.Media && Umbraco.TypedMedia(int.Parse(x.Fields["id"])) != null)
+        //))
+        //.ToList();
+
+        model.AllResults = results;
+
+        model.TotalResults = results.Count;
+        model.TotalPages = (int)Math.Ceiling((decimal)model.TotalResults / model.PageSize);
+        model.CurrentPage = Math.Max(1, Math.Min(model.TotalPages, model.CurrentPage));
+
+        // Page the results
+        model.PagedResults = model.AllResults.Skip(model.PageSize * (model.CurrentPage - 1)).Take(model.PageSize);
+
+        LogHelper.Debug<string>("[ezSearch] Searching Lucene with the following query: " + query.ToString());
+
+        if (!model.PagedResults.Any())
+        {
+            // No results found, so render no results view
+            if (model.SearchFormLocation != "none")
+            {
+                @RenderForm(model)
+            }
+            @RenderNoResults(model)
+        }
+        else
+        {
+            // Render out the results
+            if (model.SearchFormLocation == "top" || model.SearchFormLocation == "both")
+            {
+                @RenderForm(model)
+            }
+            @RenderSummary(model)
+            @RenderResultsRange(model)
+            @RenderResults(model)
+            if (model.TotalPages > 1)
+            {
+                @RenderPager(model)
+            }
+            if (model.SearchFormLocation == "bottom" || model.SearchFormLocation == "both")
+            {
+                @RenderForm(model)
+            }
+        }
+    }
+    else
+    {
+        // Empty search term so just render the form
+        if (model.SearchFormLocation != "none")
+        {
+            @RenderForm(model)
+        }
+    }
+}
+
+@*
+    ==================================================
+     Render Functions
+    ==================================================
+*@
+
+@helper RenderForm(SearchViewModel model)
+{
+var cssClassSales = model.Department == "sales" ? "active" : "";
+var cssClassLettings = model.Department == "lettings" ? "active" : "";
+
+if (model.Department == "sales")
+{
+        <form id="sales" class="property-search-form ezsearch-form container" action="">
+            <div class="row">
+                @*Residential Sales *@
+                <div class="4u 12u(mobile)">
+                    @*@Html.EnumDropDownListFor(m => model.SalesLocation, "Any Location", new { Name = "Location", @class = "12u selectpicker", onchange = "this.form.submit()" })*@
+                    <select name="Location" class="12u selectpicker" onchange="this.form.submit()" data-none-selected-text="Any Location">
+                        <option value="Any">Any Location</option>
+                        <option value="Benwick">
+                            Benwick
+                        </option>
+                        <option value="Chatteris">
+                            Chatteris
+                        </option>
+                        <option value="Doddington">
+                            Doddington
+                        </option>
+                        <option value="Ely">
+                            Ely
+                        </option>
+                        <option value="Guyhirn">
+                            Guyhirn
+                        </option>
+                        <option value="March">
+                            March
+                        </option>
+                        <option value="Peterborough">
+                            Peterborough
+                        </option>
+                        <option value="Ramsey">
+                            Ramsey
+                        </option>
+                        <option value="Sutton">
+                            Sutton
+                        </option>
+                        <option value="Warboys">
+                            Warboys
+                        </option>
+                        <option value="Wisbech">
+                            Wisbech
+                        </option>
+                    </select>
+                </div>
+                <div class="3u 12u(mobile)">
+                    <select name="MinBedrooms" class="12u selectpicker" onchange="this.form.submit()">
+                        <option value="0">No Min Beds</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="4u 12u(mobile) dropdown-double">
+                    <select id="minprice" name="MinPrice" class="selectpicker" onchange="this.form.submit()">
+                        <option value="0">Min Price</option>
+                        <option value="50000">&pound;50,000</option>
+                        <option value="60000">&pound;60,000</option>
+                        <option value="70000">&pound;70,000</option>
+                        <option value="80000">&pound;80,000</option>
+                        <option value="90000">&pound;90,000</option>
+                        <option value="100000">&pound;100,000</option>
+                        <option value="110000">&pound;110,000</option>
+                        <option value="120000">&pound;120,000</option>
+                        <option value="125000">&pound;125,000</option>
+                        <option value="130000">&pound;130,000</option>
+                        <option value="140000">&pound;140,000</option>
+                        <option value="150000">&pound;150,000</option>
+                        <option value="160000">&pound;160,000</option>
+                        <option value="170000">&pound;170,000</option>
+                        <option value="175000">&pound;175,000</option>
+                        <option value="180000">&pound;180,000</option>
+                        <option value="190000">&pound;190,000</option>
+                        <option value="200000">&pound;200,000</option>
+                        <option value="210000">&pound;210,000</option>
+                        <option value="220000">&pound;220,000</option>
+                        <option value="230000">&pound;230,000</option>
+                        <option value="240000">&pound;240,000</option>
+                        <option value="250000">&pound;250,000</option>
+                        <option value="260000">&pound;260,000</option>
+                        <option value="270000">&pound;270,000</option>
+                        <option value="280000">&pound;280,000</option>
+                        <option value="290000">&pound;290,000</option>
+                        <option value="300000">&pound;300,000</option>
+                        <option value="325000">&pound;325,000</option>
+                        <option value="350000">&pound;350,000</option>
+                        <option value="375000">&pound;375,000</option>
+                        <option value="400000">&pound;400,000</option>
+                        <option value="425000">&pound;425,000</option>
+                        <option value="450000">&pound;450,000</option>
+                        <option value="475000">&pound;475,000</option>
+                        <option value="500000">&pound;500,000</option>
+                        <option value="550000">&pound;550,000</option>
+                        <option value="600000">&pound;600,000</option>
+                        <option value="650000">&pound;650,000</option>
+                        <option value="700000">&pound;700,000</option>
+                        <option value="800000">&pound;800,000</option>
+                        <option value="900000">&pound;900,000</option>
+                        <option value="1000000">&pound;1,000,000</option>
+                        <option value="1250000">&pound;1,250,000</option>
+                        <option value="1500000">&pound;1,500,000</option>
+                        <option value="1750000">&pound;1,750,000</option>
+                        <option value="2000000">&pound;2,000,000</option>
+                        <option value="2500000">&pound;2,500,000</option>
+                        <option value="3000000">&pound;3,000,000</option>
+                        <option value="4000000">&pound;4,000,000</option>
+                        <option value="5000000">&pound;5,000,000</option>
+                        <option value="7500000">&pound;7,500,000</option>
+                        <option value="10000000">&pound;10,000,000</option>
+                    </select>
+
+                    <div class="search-form divider">to</div>
+
+                    <select id="maxprice" name="MaxPrice" class="selectpicker" onchange="this.form.submit()">
+                        <option value="0">Max Price</option>
+                        <option value="50000">£50,000</option>
+                        <option value="60000">£60,000</option>
+                        <option value="70000">£70,000</option>
+                        <option value="80000">£80,000</option>
+                        <option value="90000">£90,000</option>
+                        <option value="100000">£100,000</option>
+                        <option value="110000">£110,000</option>
+                        <option value="120000">£120,000</option>
+                        <option value="125000">£125,000</option>
+                        <option value="130000">£130,000</option>
+                        <option value="140000">&pound;140,000</option>
+                        <option value="150000">&pound;150,000</option>
+                        <option value="160000">&pound;160,000</option>
+                        <option value="170000">&pound;170,000</option>
+                        <option value="175000">&pound;175,000</option>
+                        <option value="180000">&pound;180,000</option>
+                        <option value="190000">&pound;190,000</option>
+                        <option value="200000">&pound;200,000</option>
+                        <option value="210000">&pound;210,000</option>
+                        <option value="220000">&pound;220,000</option>
+                        <option value="230000">&pound;230,000</option>
+                        <option value="240000">&pound;240,000</option>
+                        <option value="250000">&pound;250,000</option>
+                        <option value="260000">&pound;260,000</option>
+                        <option value="270000">&pound;270,000</option>
+                        <option value="280000">&pound;280,000</option>
+                        <option value="290000">&pound;290,000</option>
+                        <option value="300000">&pound;300,000</option>
+                        <option value="325000">&pound;325,000</option>
+                        <option value="350000">&pound;350,000</option>
+                        <option value="375000">&pound;375,000</option>
+                        <option value="400000">&pound;400,000</option>
+                        <option value="425000">&pound;425,000</option>
+                        <option value="450000">&pound;450,000</option>
+                        <option value="475000">&pound;475,000</option>
+                        <option value="500000">&pound;500,000</option>
+                        <option value="550000">&pound;550,000</option>
+                        <option value="600000">&pound;600,000</option>
+                        <option value="650000">&pound;650,000</option>
+                        <option value="700000">&pound;700,000</option>
+                        <option value="800000">&pound;800,000</option>
+                        <option value="900000">&pound;900,000</option>
+                        <option value="1000000">&pound;1,000,000</option>
+                        <option value="1250000">&pound;1,250,000</option>
+                        <option value="1500000">&pound;1,500,000</option>
+                        <option value="1750000">&pound;1,750,000</option>
+                        <option value="2000000">&pound;2,000,000</option>
+                        <option value="2500000">&pound;2,500,000</option>
+                        <option value="3000000">&pound;3,000,000</option>
+                        <option value="4000000">&pound;4,000,000</option>
+                        <option value="5000000">&pound;5,000,000</option>
+                        <option value="7500000">&pound;7,500,000</option>
+                        <option value="10000000">&pound;10,000,000</option>
+                    </select>
+                </div>
+                <div class="3u 12u(mobile)">
+                    <input type="submit" value="@(GetDictionaryValue("[ezSearch] Search", "Search"))" class="btn btn-primary btn-lg btn-block" />
+                </div>
+            </div>
+            <input type="hidden" name="department" value="sales">
+            <!-- Default Order: Newest Properties First -->
+            <input type="hidden" name="orderby" value="price-high">
+
+        </form>
+}
+else
+{
+        <form action="" method="get" class="property-search-form ezsearch-form container">
+            <div class="row">
+                @*Lettings *@
+                <div class="4u 12u(mobile)">
+                    <select name="Location" class="12u selectpicker" onchange="this.form.submit()" data-none-selected-text="Any Location">
+                        <option value="any">Any Location</option>
+                        <option value="2">
+                            Wisbech
+                        </option>
+                        <option value="6">
+                            March
+                        </option>
+                        <option value="8">
+                            Chatteris
+                        </option>
+                        <option value="10">
+                            Ramsey
+                        </option>
+                        <option value="12">
+                            Cambridge
+                        </option>
+                        <option value="33">
+                            Ely
+                        </option>
+                    </select>
+                </div>
+                <div class="3u 12u(mobile)">
+                    <select name="MinBedrooms" onchange="this.form.submit()" class="12u selectpicker">
+                        <option value="0">No Min Beds</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="4u 12u(mobile) dropdown-double">
+                    <select name="MinPrice" onchange="this.form.submit()" class="selectpicker">
+                        <option value="0">Min Price</option>
+                        <option value="50">&pound;50</option>
+                        <option value="100">&pound;100</option>
+                        <option value="200">&pound;200</option>
+                        <option value="300">&pound;300</option>
+                        <option value="400">&pound;400</option>
+                        <option value="500">&pound;500</option>
+                        <option value="600">&pound;600</option>
+                        <option value="700">&pound;700</option>
+                        <option value="800">&pound;800</option>
+                        <option value="900">&pound;900</option>
+                        <option value="1000">&pound;1,000</option>
+                        <option value="1250">&pound;1,250</option>
+                        <option value="1500">&pound;1,500</option>
+                        <option value="1750">&pound;1,750</option>
+                        <option value="2000">&pound;2,000</option>
+                        <option value="2250">&pound;2,250</option>
+                        <option value="2500">&pound;2,500</option>
+                        <option value="2750">&pound;2,750</option>
+                        <option value="3000">&pound;3,000</option>
+                        <option value="3500">&pound;3,500</option>
+                        <option value="4000">&pound;4,000</option>
+                        <option value="5000">&pound;5,000</option>
+                        <option value="7500">&pound;7,500</option>
+                        <option value="10000">&pound;10,000</option>
+                    </select>
+
+                    <div class="search-form divider">to</div>
+
+                    <select name="MaxPrice" onchange="this.form.submit()" class="selectpicker">
+                        <option value="0">Max Price</option>
+                        <option value="50">&pound;50</option>
+                        <option value="100">&pound;100</option>
+                        <option value="200">&pound;200</option>
+                        <option value="300">&pound;300</option>
+                        <option value="400">&pound;400</option>
+                        <option value="500">&pound;500</option>
+                        <option value="600">&pound;600</option>
+                        <option value="700">&pound;700</option>
+                        <option value="800">&pound;800</option>
+                        <option value="900">&pound;900</option>
+                        <option value="1000">&pound;1,000</option>
+                        <option value="1250">&pound;1,250</option>
+                        <option value="1500">&pound;1,500</option>
+                        <option value="1750">&pound;1,750</option>
+                        <option value="2000">&pound;2,000</option>
+                        <option value="2250">&pound;2,250</option>
+                        <option value="2500">&pound;2,500</option>
+                        <option value="2750">&pound;2,750</option>
+                        <option value="3000">&pound;3,000</option>
+                        <option value="3500">&pound;3,500</option>
+                        <option value="4000">&pound;4,000</option>
+                        <option value="5000">&pound;5,000</option>
+                        <option value="7500">&pound;7,500</option>
+                        <option value="10000">&pound;10,000</option>
+                    </select>
+                </div>
+                <div class="3u 12u(mobile)">
+                    <input type="submit" value="@(GetDictionaryValue("[ezSearch] Search", "Search"))" class="btn btn-primary btn-lg btn-block" />
+                </div>
+            </div>
+
+            <input type="hidden" name="department" value="lettings">
+            <!-- Default Order: Newest Properties First -->
+            <input type="hidden" name="orderby" value="price-high">
+
+        </form>
+}
+
+}
+
+@helper RenderSummary(SearchViewModel model)
+{
+    <div class="ezsearch-summary container">
+        <h2 class="page-title">
+            @Html.Raw(String.Format("Search Results (<span>{0}</span>)", model.TotalResults))
+        </h2>
+        <div class="search-results-header clearfix">
+            <div class="search-results-view">
+                <a class="btn fa fa-th-large switcher" id="grid" data-view="grid-view" href="#"><span>Grid </span></a>
+                <a class="btn fa fa-th-list switcher" id="list" data-view="list-view" href="#"><span>List </span></a>
+                @*<a href="/map"><i class="fa fa-map-marker" aria-hidden="true"></i> Map</a>*@
+            </div>
+            <div class="search-results-order clearfix">
+                <div class="form-group select">
+                    <select name="orderby" id="orderby" class="selectpicker">
+                        <option value="price-high">Sort by Price (Highest First)</option>
+                        <option value="price-low">Sort by Price (Lowest First)</option>
+                        @*<option value="name-asc">Sort by Name (ascending)</option>
+                            <option value="name-desc">Sort by Name (descending)</option>*@
+                    </select>
+                </div>
+            </div>
+
+            @*<p>@FormatHtml(GetDictionaryValue("[ezSearch] Summary", "Your search for matched <strong>{1}</strong> Propertie(s)."), model.SearchTerm, model.TotalResults)</p>*@
+            <br>
+        </div>
+    </div>
+    @*<script type="text/javascript" src="/scripts/switcher.js"></script>*@
+}
+
+@helper RenderResultsRange(SearchViewModel model)
+{
+    @*var startRecord = ((model.CurrentPage - 1) * model.PageSize) + 1;
+        var endRecord = Math.Min(model.TotalResults, (startRecord - 1) + model.PageSize);
+
+            <div class="ezsearch-result-count">
+                <p>@FormatHtml(GetDictionaryValue("[ezSearch] Results Range", "Showing results <strong>{0}</strong> to <strong>{1}</strong>."), startRecord, endRecord)</p>
+            </div>*@
+}
+
+@helper RenderResults(SearchViewModel model)
+{
+IEnumerable<SearchResult> sortOrder = model.PagedResults;
+if (model.Department == "sales")
+{
+    switch (model.SortOrder)
+    {
+        case "price-low":
+            sortOrder = model.PagedResults.OrderBy(r => int.Parse(r.Fields["price"]));
+            break;
+        case "price-high":
+            sortOrder = model.PagedResults.OrderByDescending(r => int.Parse(r.Fields["price"]));
+            break;
+        default:
+            sortOrder = model.PagedResults.OrderByDescending(r => int.Parse(r.Fields["price"]));
+            break;
+    }
+}
+else
+{
+    switch (model.SortOrder)
+    {
+        case "price-low":
+            sortOrder = model.PagedResults.OrderBy(r => int.Parse(r.Fields["rent"]));
+            break;
+        case "price-high":
+            sortOrder = model.PagedResults.OrderByDescending(r => int.Parse(r.Fields["rent"]));
+            break;
+        default:
+            sortOrder = model.PagedResults.OrderBy(r => int.Parse(r.Fields["rent"]));
+            break;
+    }
+}
+    <div class="ezsearch-results container">
+        <div id="products" class="row list-group">
+            @foreach (var result in model.PagedResults)
+            {
+                switch (result.Fields["__IndexType"])
+                {
+                    case UmbracoExamine.IndexTypes.Content:
+                        var contentItem = Umbraco.TypedContent(result.Fields["id"]);
+                        @RenderContentResult(model, contentItem)
+                        break;
+                    case UmbracoExamine.IndexTypes.Media:
+                        var mediaItem = Umbraco.TypedMedia(result.Fields["id"]);
+                        @RenderMediaResult(model, mediaItem)
+                        break;
+                }
+            }
+        </div>
+    </div>
+}
+
+@helper RenderContentResult(SearchViewModel model, IPublishedContent result)
+{
+var images = result.GetPropertyValue<string>("images").Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+var propertyPrice = result.GetPropertyValue<string>("department") == "Sales" ? result.GetPropertyValue("price") : result.GetPropertyValue("rent").ToDecimal();
+
+    <div class="item 4u 12u(mobile) col-xs-4 col-lg-4 list-group-item">
+        <div class="thumbnail">
+            @if (result.HasValue("images"))
+            {
+                var mainImage = result.GetPropertyValue<string>("images").Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).First();
+                var image = Umbraco.TypedMedia(mainImage);
+
+                <a href="@result.Url" class="image featured">
+                    <img class="group list-group-image" src="@(image != null ? image.Url : "Awaiting Photo")" alt="@image.Name" />
+
+                    @if (model.Department == "sales" && result.GetPropertyValue<string>("availability") == "4")
+                    {
+                        <div class="corner_banner"><h2>sold stc</h2></div>
+
+                    }
+                    @if (model.Department == "lettings" && result.GetPropertyValue<string>("letAvailability") == "4")
+                    {
+                        <div class="corner_banner"><h2>Let by</h2></div>
+                    }
+                </a>
+            }
+            <div class="caption">
+                <h4 class="group inner list-group-item-heading">
+                    @result.GetPropertyValue("displayAddress")
+                </h4>
+                <p class="group inner list-group-item-text">
+                    @Umbraco.Truncate(result.GetPropertyValue("mainSummary").ToString().StripHtml(), 122)
+                </p>
+                <ul class="meta">
+                    <li class="icon fa-camera">@images.Count()</li>
+                    <li class="icon fa-bed">@result.GetPropertyValue("propertyBedrooms")</li>
+                    <li class="icon fa-bath">@result.GetPropertyValue("propertyBathrooms")</li>
+                </ul>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        @if (model.Department == "lettings")
+                        {
+                            var rentFrequency = Enum.GetName(typeof(RentFrequency), result.GetPropertyValue("rentFrequency"));
+                            <h4 class="lead">@(String.Format(new CultureInfo("en-GB"), "{0:C}", propertyPrice) ) <span>@rentFrequency</span></h4>
+                        }
+                        else
+                        {
+                            var bob = Enum.GetName(typeof(PriceQualifier), result.GetPropertyValue<int>("priceQualifier"));
+                            <h4 class="lead">@(String.Format(new CultureInfo("en-GB"), "{0:C}", propertyPrice) ) <span>@(bob != null ? bob.Replace("_", " ") : "")</span></h4>
+                        }
+                    </div>
+                    <div class="col-xs-12 col-md-7">
+                        <a href="@result.Url" class="button">More Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@helper RenderMediaResult(SearchViewModel model, IPublishedContent result)
+{
+    <div class="ezsearch-result">
+        <h2><a href="@(result.GetPropertyValue<string>("umbracoFile"))" class="@(result.GetPropertyValue<string>("umbracoExtension"))">@result.Name</a></h2>
+        @foreach (var field in model.PreviewFields.Where(field => result.HasValue(field)))
+        {
+            <p>@Highlight(Truncate(Umbraco.StripHtml(result.GetPropertyValue(field).ToString()), model.PreviewLength), model.SearchTerms)</p>
+            break;
+        }
+    </div>
+}
+
+@helper RenderPager(SearchViewModel model)
+{
+    <div class="ezsearch-pager">
+        <nav aria-label="...">
+            <ul class="pagination">
+                @if (model.CurrentPage > 1)
+                {
+                    <li><a class="prev" href="?@(model.SearchTerm)&p=@(model.CurrentPage-1)"><span aria-hidden="true">&laquo;</span></a></li>
+                }
+                else
+                {
+                    <li class="disabled"><span class="prev">@(GetDictionaryValue("[ezSearch] Previous", "Previous"))</span></li>
+                }
+
+                @for (var i = 1; i <= model.TotalPages; i++)
+                {
+                    if (i == model.CurrentPage)
+                    {
+                        <li class="active"><span class="page">@i</span></li>
+                    }
+                    else
+                    {
+                        <li><a class="page" href="?@(model.SearchTerm)&p=@(i)">@i</a></li>
+                    }
+                }
+
+                @if (model.CurrentPage < model.TotalPages)
+                {
+                    <li><a class="next" href="?@(model.SearchTerm)&p=@(model.CurrentPage + 1)">@(GetDictionaryValue("[ezSearch] Next", "Next"))</a></li>
+                }
+                else
+                {
+                    <li><span class="next">@(GetDictionaryValue("[ezSearch] Next", "Next"))</span></li>
+                }
+            </ul>
+        </nav>
+
+    </div>
+}
+
+@helper RenderNoResults(SearchViewModel model)
+{
+    <div class="ezsearch-no-results container">
+        <div class="row">
+            <div class="12u">
+                <div class="content">
+                    <!-- Content -->
+                    <article class="box page-content">
+                        <header>
+                            <h2>Your search has returned 0 results</h2>
+                        </header>
+                        <section>
+                            <h3>In order to return properties in your searches, try adjusting your search criteria</h3>
+                            @*<p>@FormatHtml(GetDictionaryValue("[ezSearch] No Results", "No results found for search term <strong>{0}</strong>."), model.SearchTerm)</p>*@
+                        </section>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@functions
+{
+    // ==================================================
+    //  Helper Functions
+    //==================================================
+
+    // Cleanse the search term
+    public string CleanseSearchTerm(string input)
+    {
+        return Umbraco.StripHtml(input).ToString();
+    }
+
+    // Splits a string on space, except where enclosed in quotes
+    public IEnumerable<string> Tokenize(string input)
+    {
+        return Regex.Matches(input, @"[\""].+?[\""]|[^ ]+")
+            .Cast<Match>()
+            .Select(m => m.Value.Trim('\"'))
+            .ToList();
+    }
+
+    // Highlights all occurances of the search terms in a body of text
+    public IHtmlString Highlight(IHtmlString input, Dictionary<string, string> searchTerms)
+    {
+        return Highlight(input.ToString(), searchTerms);
+    }
+
+    // Highlights all occurances of the search terms in a body of text
+    public IHtmlString Highlight(string input, Dictionary<string, string> searchTerms)
+    {
+        input = HttpUtility.HtmlDecode(input);
+
+        foreach (var searchTerm in searchTerms)
+        {
+            input = Regex.Replace(input, Regex.Escape(searchTerm.Value), @"<strong>$0</strong>", RegexOptions.IgnoreCase);
+        }
+
+        return new HtmlString(input);
+    }
+
+    // Formats a string and returns as HTML
+    public IHtmlString FormatHtml(string input, params object[] args)
+    {
+        return Html.Raw(string.Format(input, args));
+    }
+
+    // Gets a dictionary value with a fallback
+    public string GetDictionaryValue(string key, string fallback)
+    {
+        var value = Umbraco.GetDictionaryValue(key);
+
+        return !string.IsNullOrEmpty(value)
+            ? value
+            : fallback;
+    }
+
+    // Truncates a string on word breaks
+    public string Truncate(IHtmlString input, int maxLength)
+    {
+        return Truncate(input.ToString(), maxLength);
+    }
+
+    // Truncates a string on word breaks
+    public string Truncate(string input, int maxLength)
+    {
+        var truncated = Umbraco.Truncate(input, maxLength, true).ToString();
+        if (truncated.EndsWith("&hellip;"))
+        {
+            var lastSpaceIndex = truncated.LastIndexOf(' ');
+            if (lastSpaceIndex > 0)
+            {
+                truncated = truncated.Substring(0, lastSpaceIndex) + "&hellip;";
+            }
+        }
+
+        return truncated;
+    }
+
+    // Gets a macro parameter in a safe manner with fallback
+    public string GetMacroParam(PartialViewMacroModel model, string key, string fallback)
+    {
+        return GetMacroParam(model, key, s => s, fallback);
+    }
+
+    // Gets a macro parameter in a safe manner with fallback
+    public TType GetMacroParam<TType>(PartialViewMacroModel model, string key, Func<string, TType> convert, TType fallback)
+    {
+        if (!model.MacroParameters.ContainsKey(key))
+        {
+            return fallback;
+        }
+
+        var value = model.MacroParameters[key];
+        if (value == null || value.ToString().Trim() == "")
+        {
+            return fallback;
+        }
+
+        try
+        {
+            return convert(value.ToString());
+        }
+        catch (Exception)
+        {
+            return fallback;
+        }
+    }
+
+    // Splits a coma seperated string into a list
+    public IList<string> SplitToList(string input)
+    {
+        return input.Split(',')
+            .Select(f => f.Trim())
+            .Where(f => !string.IsNullOrEmpty(f))
+            .ToList();
+    }
+
+    // ==================================================
+    //  Helper Classes
+    //==================================================
+
+    public class SearchViewModel
+    {
+        // Query Parameters
+        public int MinBedrooms { get; set; }
+        public int MinPrice { get; set; }
+        public int MaxPrice { get; set; }
+        public string SortOrder { get; set; }
+        public string Location { get; set; }
+        public SalesLocation SalesLocation { get; set; }
+        public string SearchTerm { get; set; }
+        public string Department { get; set; }
+        public Dictionary<string, string> SearchTerms { get; set; }
+        public int CurrentPage { get; set; }
+
+        // Options
+        public int RootContentNodeId { get; set; }
+        public int RootMediaNodeId { get; set; }
+        public string IndexType { get; set; }
+        public IList<string> SearchFields { get; set; }
+        public IList<string> PreviewFields { get; set; }
+        public int PreviewLength { get; set; }
+        public int PageSize { get; set; }
+        public string HideFromSearchField { get; set; }
+        public string SearchFormLocation { get; set; }
+
+        // Results
+        public int TotalResults { get; set; }
+        public int TotalPages { get; set; }
+
+        public IEnumerable<SearchResult> AllResults { get; set; }
+        public IEnumerable<SearchResult> PagedResults { get; set; }
+    }
+
+    public enum RentFrequency
+    {
+        //The rent frequency of the property such as Per Calendar Month
+        pcm = 1,
+        pw,
+        pa
+    }
+
+    public enum SalesLocation
+    {
+        Any = 0,
+        Benwick = 2,
+        Chatteris = 7,
+        Doddington = 5,
+        Ely = 31,
+        Guyhirn = 1,
+        March = 5,
+        Peterborough = 13,
+        Ramsey = 9,
+        Sutton = 31,
+        Warboys = 17,
+        Wisbech = 1
+    }
+
+    public enum PriceQualifier
+    {
+        Asking_Price_Of = 1,
+        Fixed_Price = 2,
+        From = 3,
+        Guide_Price = 4,
+        Offers_In_Region_Of = 5,
+        Offers_Over = 6,
+        Auction_Guide_Price = 7,
+        Sale_By_Tender = 8,
+        Shared_Ownership = 9,
+        Offers_In_Excess_Of = 10,
+        Offers_Invited = 11,
+        Starting_Bid = 12
+    }
+
+
+    }

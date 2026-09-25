@@ -1,0 +1,41 @@
+﻿@using TpayneandCo.Models
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = "umbLayout.cshtml";
+	var pageTitle = string.IsNullOrWhiteSpace(CurrentPage.Title)
+        ? CurrentPage.Name
+        : CurrentPage.Title;
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<div id="main-wrapper">
+    <div id="main" class="container">
+        <div class="row">
+            <div class="9u 12u(mobile) important(mobile)">
+                <div class="content content-left">
+                    <!-- Content -->
+                    <article class="is-page-content">
+                        <header>
+                            <h2>@pageTitle</h2>
+                        </header>
+                        <section>
+                            @CurrentPage.BodyText
+                        </section>                           
+                    </article>
+                    <!-- /Content -->
+                </div>
+            </div>
+        </div>
+		<div class="row">
+			<div class="9u 12u(mobile)">
+                <div class="sidebar">
+                    <!-- Contact Form -->
+					@{ Html.RenderPartial("~/Views/Partials/umbContactForm.cshtml", new ContactModel()); }
+					@*Html.Partial("umbContactForm",new ContactModel)*@
+                    <!-- /Contact Form -->
+                </div>
+            </div>
+		</div>
+    </div>
+</div>

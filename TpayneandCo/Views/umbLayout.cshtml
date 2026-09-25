@@ -1,0 +1,96 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    Layout = null;
+}<!DOCTYPE html>
+<!--
+    TXT 2.0 by HTML5 UP
+    html5up.net | twitter.com/n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>@Umbraco.Field("title", altFieldAlias: "pageName") | @Umbraco.Field("siteName", recursive: true)</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="@Model.Content.GetPropertyValue("description")" />
+    <meta name="keywords" content="@Model.Content.GetPropertyValue("keywords")" />
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Estate Agents In Chatteris - T Payne &amp; Co Estate Agents">
+	<meta property="og:description" content="@Model.Content.GetPropertyValue("description")">
+	<meta property="og:url" content="http://www.tpayneandco.co.uk/">
+	<meta property="og:site_name" content="T Payne &amp; Co Estate Agents">
+	<meta property="og:image" content="~/media/2223/tpaynefront-300x186.jpg">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700" rel="stylesheet" />
+    <script src="/scripts/jquery-1.10.2.min.js"></script>
+    
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/bootstrap-select.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/owl.carousel.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><script src="/js/html5shiv.js"></script><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" /><![endif]-->
+    <!-- Standard fav icon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <!-- Standard iPhone -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
+    <!-- Retina iPhone -->
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png" />
+    <!-- Standard iPad -->
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
+    <!-- Retina iPad -->
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png" />
+</head>
+<body class="homepage">
+    <!-- Header -->
+    @*<header id="header">
+            <div class="logo">
+                <div>
+                    <h1><a href="/" id="logo">@Umbraco.Field("siteName", recursive: true)</a></h1>
+                    <span class="byline">@Umbraco.Field("byline", recursive: true)</span>
+                </div>
+            </div>
+        </header>*@
+    <!-- /Header -->
+    @{ Html.RenderPartial("umbTopNavigation"); }
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <footer id="footer" class="container">
+        <div class="row">
+            <div class="12u">
+                @{ Html.RenderPartial("umbSocial"); }
+            </div>
+        </div>
+        <!-- Copyright -->
+        <div id="copyright">
+			  @{ Html.RenderPartial("umbFooterLinks"); }
+            &copy; @DateTime.Now.Year @Umbraco.Field("copyright", recursive: true) | Images: <a href="http://fotogrph.com">fotogrph</a> + <a href="http://iconify.it">Iconify.it</a> | Design: <a href="http://html5up.net/">HTML5 UP</a>
+        </div>
+        <!-- /Copyright -->
+    </footer>
+    <!-- /Footer -->
+    <!-- Scripts -->
+    <script src="/scripts/dropotron.min.js"></script>
+    <script src="/scripts/skel.min.js"></script>
+    <script src="/scripts/skel-viewport.min.js"></script>
+    <script src="/scripts/util.js"></script>
+    <script src="/scripts/main.js"></script>
+    <script src="/scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/scripts/switcher.js"></script>
+    <script src="/scripts/url.js"></script>
+    <script src="/scripts/owl.carousel.min.js"></script>
+    <script src="/scripts/bootstrap.min.js"></script>
+    <script src="/scripts/bootstrap-select.js"></script>
+    <script src="/scripts/selectbox.min.js"></script>
+    @*<script src="/scripts/nav.js"></script>*@
+    <script src="/scripts/function.js"></script>
+	<script src="/scripts/owl.carousel.js"></script>
+	<script src="/scripts/global.js"></script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58b202b0f0934389"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0tIRtfs-9sJhrvU96GQ6h9nc329Lx5G8"></script>
+    <script src="/scripts/google-maps.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<properties>
+<property>
+	<propertyID>38144</propertyID>
+	<branchID>1</branchID>
+	<clientName>JUPIX Demo</clientName>
+	<branchName>Cambridge Office</branchName>
+	<department>Lettings</department>
+	<referenceNumber>10002</referenceNumber>
+	<addressName></addressName>
+	<addressNumber>22</addressNumber>
+	<addressStreet>London Street</addressStreet>
+	<address2></address2>
+	<address3>Andover</address3>
+	<address4>Hampshire</address4>
+	<addressPostcode>SP10 2NU</addressPostcode>
+	<country>United Kingdom</country>
+	<displayAddress></displayAddress>
+	<propertyBedrooms>4</propertyBedrooms>
+	<propertyBathrooms>2</propertyBathrooms>
+	<propertyEnsuites>1</propertyEnsuites>
+	<propertyReceptionRooms>3</propertyReceptionRooms>
+	<propertyKitchens>1</propertyKitchens>
+	<displayPropertyType>Detached House</displayPropertyType>
+	<propertyType>1</propertyType>
+	<propertyStyle>4</propertyStyle>
+	<propertyAge>3</propertyAge>
+	<floorArea>400.00</floorArea>
+	<floorAreaUnits>sq ft</floorAreaUnits>
+	<propertyFeature1>Detached House</propertyFeature1>
+	<propertyFeature2>Four Bedrooms</propertyFeature2>
+	<propertyFeature3>Gas Heating</propertyFeature3>
+	<propertyFeature4></propertyFeature4>
+	<propertyFeature5></propertyFeature5>
+	<propertyFeature6></propertyFeature6>
+	<propertyFeature7></propertyFeature7>
+	<propertyFeature8></propertyFeature8>
+	<propertyFeature9></propertyFeature9>
+	<propertyFeature10></propertyFeature10>
+	<rent>850</rent>
+	<rentFrequency>1</rentFrequency>
+	<toLetPOA>0</toLetPOA>
+	<studentProperty>1</studentProperty>
+	<availability>2</availability>
+	<mainSummary>A smart 4 bed detached house close to the station</mainSummary>
+	<fullDescription><![CDATA[A smart 4 bed detached house close to the station]]></fullDescription>
+	<dateLastModified>1970-01-01</dateLastModified>
+	<featuredProperty>0</featuredProperty>
+	<regionID>11</regionID>
+	<latitude>51.206383</latitude>
+	<longitude>-1.477803</longitude>
+	<flags>
+	</flags>
+	<images>
+	</images>
+	<floorplans>
+	</floorplans>
+	<epcGraphs>
+	</epcGraphs>
+	<epcFrontPages>
+		<epcFrontPage modified="2011-04-01 11:35:00">http://epc.jupix.co.uk/cc65bdd</epcFrontPage>
+	</epcFrontPages>
+	<brochures>
+	</brochures>
+	<virtualTours>
+	</virtualTours>
+	<externalLinks>
+		<externalLink>
+			<url><![CDATA[http://www.home-passport.com/application/assets/uploads/orders/complete/14434/]]></url>
+			<description>Home Passport</description>
+			<modified>2012-11-21 12:58:33</modified>
+		</externalLink>
+	</externalLinks>
+</property>
+</properties>

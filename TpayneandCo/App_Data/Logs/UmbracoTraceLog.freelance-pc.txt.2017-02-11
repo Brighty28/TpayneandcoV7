@@ -1,0 +1,4 @@
+﻿ 2017-02-11 00:08:57,882 [P4684/D2/T32] INFO  Umbraco.Core.Logging.OwinLogger - Event Id: 0, state: User logged will be logged out due to timeout: abright2012@gmail.com, IP Address: ::1
+ 2017-02-11 00:12:49,673 [P4684/D2/T34] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: Login attempt failed for username abright2012@gmail.com from IP address ::1
+ 2017-02-11 00:12:58,245 [P4684/D2/T76] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: Login attempt succeeded for username abright2012@gmail.com from IP address ::1
+ 2017-02-11 00:12:58,245 [P4684/D2/T76] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: User: abright2012@gmail.com logged in from IP address ::1
